@@ -1,0 +1,25 @@
+package main
+
+import (
+	"core/config"
+	"core/internal/app"
+	"core/pkg/logger"
+	"log"
+)
+
+func main() {
+	cfg, err := config.LoadAndParseConfig("./config/config-local")
+	if err != nil {
+		log.Fatalf("Failed to load configuration: %v", err)
+	}
+
+	logger := logger.NewApiLogger(cfg)
+	logger.InitLogger()
+
+	logger.Infof("AppVersion: %s, LogLevel: %s, Mode: %s, SSL: %v", cfg.Server.AppVersion, cfg.Logger.Level, cfg.Server.Mode, cfg.Server.SSL)
+
+	server := app.NewApplication(cfg, logger)
+	if err := server.Start(); err != nil {
+		logger.Error(err)
+	}
+}
