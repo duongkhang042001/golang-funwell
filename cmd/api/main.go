@@ -2,7 +2,7 @@ package main
 
 import (
 	"core/config"
-	"core/internal/server"
+	"core/internal/infrastructure/server"
 	"core/pkg/logger"
 	"log"
 )
