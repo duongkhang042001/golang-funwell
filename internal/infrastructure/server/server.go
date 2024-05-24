@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
 )
 
 const (
@@ -21,14 +22,16 @@ const (
 )
 
 type Application struct {
+	db     *gorm.DB
 	echo   *echo.Echo
 	config *config.Config
 	logger logger.Logger
 }
 
-func NewApplication(config *config.Config, logger logger.Logger) *Application {
+func NewApplication(db *gorm.DB, config *config.Config, logger logger.Logger) *Application {
 	return &Application{
 		echo:   echo.New(),
+		db:     db,
 		config: config,
 		logger: logger,
 	}

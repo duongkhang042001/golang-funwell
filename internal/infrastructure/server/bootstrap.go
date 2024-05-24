@@ -8,7 +8,6 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 
 	apiMiddlewares "core/internal/interfaces/http/middleware"
-	"core/internal/interfaces/http/route"
 )
 
 func (app *Application) Bootstrap(e *echo.Echo) error {
@@ -29,11 +28,6 @@ func (app *Application) Bootstrap(e *echo.Echo) error {
 	v1 := e.Group("/api/v1")
 
 	health := v1.Group("/health")
-	userGroup := v1.Group("/users")
-	authGroup := v1.Group("/auth")
-
-	route.MapAuthRoutes(authGroup)
-	route.MapUserRoutes(userGroup)
 
 	health.GET("", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{"status": "OK"})
