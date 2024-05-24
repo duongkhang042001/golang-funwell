@@ -16,9 +16,10 @@ func main() {
 	logger := logger.NewApiLogger(cfg)
 	logger.InitLogger()
 
+	app := server.NewApplication(cfg, logger)
+
 	logger.Infof("AppVersion: %s, LogLevel: %s, Mode: %s, SSL: %v", cfg.Server.AppVersion, cfg.Logger.Level, cfg.Server.Mode, cfg.Server.SSL)
 
-	app := server.NewApplication(cfg, logger)
 	if err := app.Start(); err != nil {
 		logger.Error(err)
 	}
