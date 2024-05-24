@@ -1,4 +1,4 @@
-package app
+package server
 
 import (
 	"core/pkg/csrf"
@@ -7,8 +7,8 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	apiMiddlewares "core/internal/delivery/http/middleware"
-	"core/internal/delivery/http/route"
+	apiMiddlewares "core/internal/interfaces/http/middleware"
+	"core/internal/interfaces/http/route"
 )
 
 func (app *Application) Bootstrap(e *echo.Echo) error {
