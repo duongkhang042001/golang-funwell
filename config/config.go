@@ -12,6 +12,7 @@ import (
 type Config struct {
 	Server   ServerConfig
 	Postgres PostgresConfig
+	MySQL    MySQLConfig
 	Redis    RedisConfig
 	MongoDB  MongoDB
 	Cookie   Cookie
@@ -112,11 +113,21 @@ type AWS struct {
 	MinioEndpoint  string
 }
 
-// AWS S3
+// Jarger
 type Jaeger struct {
 	Host        string
 	ServiceName string
 	LogSpans    bool
+}
+
+// MySQL config
+type MySQLConfig struct {
+    MySQLHost     string
+    MySQLPort     string
+    MySQLUser     string
+    MySQLPassword string
+    MySQLDbname   string
+    MySQLCharset  string
 }
 
 // Load and parse config file from given path

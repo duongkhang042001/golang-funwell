@@ -39,6 +39,14 @@ redis:
     Password: ""
     DB: 0
 
+mysql:
+    MySQLHost: localhost
+    MySQLPort: 3306
+    MySQLUser: mysql_user
+    MySQLPassword: mysql_password
+    MySQLDbname: mysql_db
+    MySQLCharset: utf8mb4
+
 cookie:
     Name: jwt-token
     MaxAge: 86400
