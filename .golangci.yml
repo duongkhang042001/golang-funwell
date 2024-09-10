@@ -1,13 +1,12 @@
 run:
     tests: false
-    skip-dirs:
-        - vendor/
-
-    skip-files:
-        - "_easyjson.go"
-        - ".pb.go"
-        - ".svc.go"
-
+    issues:
+        exclude-dirs:
+            - vendor/
+        exclude-files:
+            - "_easyjson.go"
+            - ".pb.go"
+            - ".svc.go"
     modules-download-mode: readonly
 
 linters-settings:
@@ -24,4 +23,5 @@ linters-settings:
         lines: 160
 
 output:
-    format: tab
+    formats:
+    - format: tab
