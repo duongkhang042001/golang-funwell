@@ -25,7 +25,8 @@ func (app *Application) Bootstrap(e *echo.Echo) error {
 	if app.config.Server.Debug {
 		e.Use(mw.DebugMiddleware)
 	}
-
+	//TODO: Init repositories
+	//TODO: Init useCases
 	v1 := e.Group("/api/v1")
 
 	route.MapAuthRoutes(v1.Group("/auth"))
@@ -38,3 +39,5 @@ func (app *Application) Bootstrap(e *echo.Echo) error {
 
 	return nil
 }
+
+// DOCS: https://github.com/AleksK1NG/Go-Clean-Architecture-REST-API/blob/master/internal/server/handlers.go

@@ -13,7 +13,7 @@ server:
     Debug: false
 
 logger:
-    Development: false
+    Development: true
     DisableCaller: false
     DisableStacktrace: false
     Encoding: json
