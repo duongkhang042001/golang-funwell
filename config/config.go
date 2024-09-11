@@ -62,7 +62,7 @@ type PostgresConfig struct {
 
 // Redis config
 type RedisConfig struct {
-	RedisAddr      string
+	RedisHost      string
 	RedisPassword  string
 	RedisDB        string
 	RedisDefaultdb string
@@ -122,12 +122,12 @@ type Jaeger struct {
 
 // MySQL config
 type MySQLConfig struct {
-    MySQLHost     string
-    MySQLPort     string
-    MySQLUser     string
-    MySQLPassword string
-    MySQLDbname   string
-    MySQLCharset  string
+	MySQLHost     string
+	MySQLPort     string
+	MySQLUser     string
+	MySQLPassword string
+	MySQLDbname   string
+	MySQLCharset  string
 }
 
 // Load and parse config file from given path
