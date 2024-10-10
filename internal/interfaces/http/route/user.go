@@ -1,14 +1,13 @@
 package route
 
 import (
-	"core/internal/domain"
 	"core/internal/interfaces/http/middleware"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
 
-func MapUserRoutes(router *echo.Group, usecase domain.UserUseCase, mw *middleware.MiddlewareManager) {
+func MapUserRoutes(router *echo.Group, mw *middleware.MiddlewareManager) {
 	router.GET("", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, "Hello, Get all user page!")
 	})
