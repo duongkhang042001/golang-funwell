@@ -9,6 +9,7 @@ package internal
 import (
 	"core/config"
 	"core/internal/entrypoint/http/server"
+	"core/internal/infrastructure/persistence/redis"
 	"core/pkg/logger"
 	"github.com/google/wire"
 )
@@ -25,6 +26,18 @@ func InitializeApplication(configPath string) (*server.Application, error) {
 	return application, nil
 }
 
+func InitializeRedisClient(configPath string) (*redis.RedisClient, error) {
+	configConfig, err := config.LoadAndParseConfig(configPath)
+	if err != nil {
+		return nil, err
+	}
+	redisClient, err := redis.NewRedisClient(configConfig)
+	if err != nil {
+		return nil, err
+	}
+	return redisClient, nil
+}
+
 // wire.go:
 
-var providerSet = wire.NewSet(config.LoadAndParseConfig, logger.NewApiLogger, server.NewApplication)
+var providerSet = wire.NewSet(config.LoadAndParseConfig, logger.NewApiLogger, redis.NewRedisClient, server.NewApplication)

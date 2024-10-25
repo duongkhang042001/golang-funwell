@@ -6,7 +6,9 @@ import (
 )
 
 func main() {
-	app, err := internal.InitializeApplication("./config/config-local")
+	cfgPath := "./config/config-local"
+
+	app, err := internal.InitializeApplication(cfgPath)
 	if err != nil {
 		log.Fatalf("Failed to initialize application: %v", err)
 	}
