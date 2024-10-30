@@ -8,7 +8,6 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 
 	apiMiddlewares "core/internal/interfaces/http/middleware"
-	"core/internal/interfaces/http/route"
 )
 
 func (app *Application) Bootstrap(e *echo.Echo) error {
@@ -28,8 +27,6 @@ func (app *Application) Bootstrap(e *echo.Echo) error {
 	//TODO: Init repositories
 	//TODO: Init useCases
 	v1 := e.Group("/api/v1")
-
-	route.MapAuthRoutes(v1.Group("/auth"))
 
 	health := v1.Group("/health")
 
