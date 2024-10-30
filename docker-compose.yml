@@ -17,20 +17,6 @@ services:
     networks:
       - network
 
-  pgadmin:
-    image: dpage/pgadmin4:latest
-    container_name: pgadmin_ui
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@dev.com
-      PGADMIN_DEFAULT_PASSWORD: 'Admin@123'        
-    ports:
-      - 8080:80
-    depends_on:
-      - db
-    networks:
-      - network
-
 volumes:
   pgdata:
     driver: local
