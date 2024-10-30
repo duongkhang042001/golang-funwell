@@ -11,6 +11,8 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
+	"github.com/redis/go-redis/v9"
+	"gorm.io/gorm"
 )
 
 const (
@@ -24,13 +26,17 @@ type Application struct {
 	echo   *echo.Echo
 	config *config.Config
 	logger logger.Logger
+	db     *gorm.DB
+	redis  *redis.Client
 }
 
-func NewApplication(config *config.Config, logger logger.Logger) *Application {
+func NewApplication(config *config.Config, logger logger.Logger, db *gorm.DB, redis *redis.Client) *Application {
 	return &Application{
 		echo:   echo.New(),
 		config: config,
 		logger: logger,
+		db:     db,
+		redis:  redis,
 	}
 }
 

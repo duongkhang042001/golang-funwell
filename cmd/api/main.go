@@ -3,6 +3,8 @@ package main
 import (
 	"core/config"
 	"core/internal/interfaces/http/server"
+	"core/pkg/database/postgres"
+	"core/pkg/database/redis"
 	"core/pkg/logger"
 	"log"
 )
@@ -16,7 +18,15 @@ func main() {
 	logger := logger.NewApiLogger(cfg)
 	logger.InitLogger()
 
-	app := server.NewApplication(cfg, logger)
+	redisClient := redis.NewRedisClient(cfg, logger)
+	defer redisClient.Close()
+
+	postgresClient, err := postgres.NewPostgresDB(cfg, logger)
+	if err != nil {
+		logger.Fatalf("Failed to connect to PostgreSQL: %v", err)
+	}
+
+	app := server.NewApplication(cfg, logger, postgresClient, redisClient)
 
 	logger.Infof("AppVersion: %s, LogLevel: %s, Mode: %s, SSL: %v", cfg.Server.AppVersion, cfg.Logger.Level, cfg.Server.Mode, cfg.Server.SSL)
 

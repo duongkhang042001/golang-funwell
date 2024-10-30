@@ -22,9 +22,9 @@ logger:
 postgres:
     PostgresqlHost: localhost
     PostgresqlPort: 5432
-    PostgresqlUser: postgres
-    PostgresqlPassword: postgres
-    PostgresqlDbname: auth_db
+    PostgresqlUser: admin
+    PostgresqlPassword: Admin@123
+    PostgresqlDbname: funwell
     PostgresqlSslmode: false
     PgDriver: pgx
 

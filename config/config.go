@@ -56,7 +56,7 @@ type PostgresConfig struct {
 	PostgresqlUser     string
 	PostgresqlPassword string
 	PostgresqlDbname   string
-	PostgresqlSSLMode  bool
+	PostgresqlSslMode  string
 	PgDriver           string
 }
 
