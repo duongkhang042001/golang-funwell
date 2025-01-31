@@ -93,13 +93,6 @@ func (app *Application) Start() error {
 		}
 	}()
 
-	go func() {
-		app.logger.Infof("Starting Debug Server on PORT: %s", app.config.Server.PprofPort)
-		if err := http.ListenAndServe(app.config.Server.PprofPort, http.DefaultServeMux); err != nil {
-			app.logger.Errorf("Error PPROF ListenAndServe: %s", err)
-		}
-	}()
-
 	if err := app.Bootstrap(app.echo); err != nil {
 		return err
 	}

@@ -2,7 +2,7 @@ package main
 
 import (
 	"core/config"
-	"core/internal/interfaces/http/server"
+	"core/internal/adapters/http/server"
 	"core/pkg/database/postgres"
 	"core/pkg/database/redis"
 	"core/pkg/logger"
