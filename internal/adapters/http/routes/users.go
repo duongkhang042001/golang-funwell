@@ -10,20 +10,21 @@ import (
 type User struct {
 	Username string `json:"username" validate:"required,min=3,max=20"`
 	Email    string `json:"email" validate:"required,email"`
-	Password string `json:"password" validate:"required,min=40,m"`
+	Password string `json:"password" validate:"required,min=40"`
 }
 
 func InitUserRoutes(e *echo.Group) {
-	e.GET(`/users`, func(c echo.Context) error {
+
+	users := e.Group("/users")
+
+	users.GET(``, func(c echo.Context) error {
 		user := &User{
 			Username: "testuser",
-			Email:    "test@example.com",
+			Email:    "testexample.com",
 			Password: "pas",
 		}
 
-		ctx := context.Background()
-
-		err := validator.ValidateStruct(ctx, user)
+		err := validator.ValidateStruct(context.Background(), user)
 		if err != nil {
 			return c.JSON(400, map[string]string{"error": err.Error()})
 		}

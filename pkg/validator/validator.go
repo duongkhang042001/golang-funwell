@@ -2,6 +2,7 @@ package validator
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"strings"
 
@@ -88,5 +89,5 @@ func mappingValidationErrorMessages(errs validator.ValidationErrors) error {
 		}
 	}
 
-	return fmt.Errorf(strings.Join(messages, " "))
+	return errors.New(strings.Join(messages, " "))
 }
